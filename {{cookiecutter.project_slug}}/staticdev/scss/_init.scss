@@ -1,0 +1,100 @@
+
+
+
+/* _   _ _   _ _
+| | | | | (_) |
+| | | | |_ _| |___
+| | | | __| | / __|
+| |_| | |_| | \__ \
+ \___/ \__|_|_|___/
+
+*/
+.nomargin {margin:0!important;}
+.nopadding {padding:0!important;}
+
+.color-gray {color:#777!important;}
+.color-white {color:#FFF!important;}
+.color-orange {color:#ffbf00!important;}
+
+
+/*
+______
+|  ___|
+| |_ ___  _ __ _ __ ___  ___
+|  _/ _ \| '__| '_ ` _ \/ __|
+| || (_) | |  | | | | | \__ \
+\_| \___/|_|  |_| |_| |_|___/
+*/
+textarea {max-height:500px;}
+
+
+
+/*
+______ _
+|  _  (_)
+| | | |_  __ _ _ __   __ _  ___
+| | | | |/ _` | '_ \ / _` |/ _ \
+| |/ /| | (_| | | | | (_| | (_) |
+|___/ | |\__,_|_| |_|\__, |\___/
+     _/ |             __/ |
+    |__/             |___/
+*/
+.asteriskField { display: none; }
+
+
+
+/*
+SPLIT LAYOUT: SIDEBAR + MAIN
+======================================================================
+*/
+.fullheight-container {height:100%; display:table; padding:0;
+    > .fullheight-row {height: 100%; display:table-row; @include make-row(); margin:0!important;
+        > .fullheight-col {display:table-cell; float:none; vertical-align:top;}
+        /* Custom */
+        #sidebar {background:$main;
+            @include media-breakpoint-down(sm) {
+                display:none;
+            }
+        }
+        #content {}
+    }
+}
+
+
+/*
+______             _       _
+| ___ \           | |     | |
+| |_/ / ___   ___ | |_ ___| |_ _ __ __ _ _ __
+| ___ \/ _ \ / _ \| __/ __| __| '__/ _` | '_ \
+| |_/ / (_) | (_) | |_\__ \ |_| | | (_| | |_) |
+\____/ \___/ \___/ \__|___/\__|_|  \__,_| .__/
+                                        | |
+                                        |_|
+*/
+
+/*
+Integrate breakpoints into .w-* and .h-*
+*/
+@each $breakpoint in map-keys($grid-breakpoints) {
+    @include media-breakpoint-up($breakpoint) {
+        $infix: breakpoint-infix($breakpoint, $grid-breakpoints);
+
+        @each $prop, $abbrev in (width: w, height: h) {
+            @each $size, $length in $sizes {
+                .#{$abbrev}#{$infix}-#{$size} { #{$prop}: $length !important; }
+            }
+        }
+    }
+}
+
+/*
+Alert messages
+*/
+$theme-colors: map-merge((
+        "error":    $danger
+), $theme-colors);
+@each $color, $value in $theme-colors {
+    .alert.#{$color} {
+        @include alert-variant(theme-color-level($color, $alert-bg-level), theme-color-level($color, $alert-border-level), theme-color-level($color, $alert-color-level));
+    }
+}
