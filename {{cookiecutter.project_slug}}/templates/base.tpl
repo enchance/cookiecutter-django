@@ -1,4 +1,4 @@
-{% load static i18n coretags corefilters %}
+{#{% load static i18n coretags corefilters %}#}
 <!DOCTYPE html>
 <html lang="en">
 <head>
