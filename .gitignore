@@ -215,3 +215,9 @@ tags
 .idea/
 
 .pytest_cache/
+
+
+
+# Custom ignores
+media/
+staticdev/fontawesome/
