@@ -351,5 +351,8 @@ sentry_sdk.init(
     traces_sample_rate=env.float("SENTRY_TRACES_SAMPLE_RATE", default=0.0),
 )
 {% endif %}
+
+
 # Your stuff...
 # ------------------------------------------------------------------------------
+SKIP_CACHE = env.bool('SKIP_CACHE', default=False)
