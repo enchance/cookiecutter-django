@@ -93,3 +93,4 @@ CELERY_TASK_EAGER_PROPAGATES = True
 
 # Your stuff...
 # ------------------------------------------------------------------------------
+SKIP_CACHE = env.bool('SKIP_CACHE', default=True)

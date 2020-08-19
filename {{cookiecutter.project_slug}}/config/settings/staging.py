@@ -1,6 +1,8 @@
 from .production import *
 
 DEBUG = True
+SKIP_CACHE = env.bool('SKIP_CACHE', default=True)
+
 # django-debug-toolbar
 # ------------------------------------------------------------------------------
 # https://django-debug-toolbar.readthedocs.io/en/latest/installation.html#prerequisites
