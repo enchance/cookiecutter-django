@@ -336,6 +336,16 @@ MailHog
 
 
 # Custom ignores
+wsgi.py
+.env*
+Pip*
 .idea/
+docs/
 media/
 staticdev/fontawesome/
+static/
+#staticdev/*
+#!staticdev/css/
+#!staticdev/scss/
+#!staticdev/js/
+#!staticdev/bootstrap/
