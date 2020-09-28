@@ -144,7 +144,7 @@ MIDDLEWARE = [
 STATIC_ROOT = str(ROOT_DIR / "static")
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [
-    str(APPS_DIR / "staticdev")
+    str(ROOT_DIR / "staticdev")
 ]
 # https://docs.djangoproject.com/en/dev/ref/contrib/staticfiles/#staticfiles-finders
 STATICFILES_FINDERS = [
