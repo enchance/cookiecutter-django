@@ -42,14 +42,14 @@ CACHES = {
 
 # SECURITY
 # ------------------------------------------------------------------------------
-# https://docs.djangoproject.com/en/dev/ref/settings/#secure-proxy-ssl-header
 SECURE_PROXY_SSL_HEADER = ("HTTP_X_FORWARDED_PROTO", "https")
-# https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
 SECURE_SSL_REDIRECT = env.bool("DJANGO_SECURE_SSL_REDIRECT", default=True)
-# https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-secure
 SESSION_COOKIE_SECURE = True
-# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-secure
 CSRF_COOKIE_SECURE = True
+# https://docs.djangoproject.com/en/dev/ref/settings/#secure-proxy-ssl-header
+# https://docs.djangoproject.com/en/dev/ref/settings/#secure-ssl-redirect
+# https://docs.djangoproject.com/en/dev/ref/settings/#session-cookie-secure
+# https://docs.djangoproject.com/en/dev/ref/settings/#csrf-cookie-secure
 # https://docs.djangoproject.com/en/dev/topics/security/#ssl-https
 # https://docs.djangoproject.com/en/dev/ref/settings/#secure-hsts-seconds
 # TODO: set this to 60 seconds first and then to 518400 once you prove the former works
@@ -72,25 +72,28 @@ SECURE_CONTENT_TYPE_NOSNIFF = env.bool(
 INSTALLED_APPS += ["storages"]  # noqa F405
 {%- endif -%}
 {% if cookiecutter.cloud_provider == 'AWS' %}
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_ACCESS_KEY_ID = env("DJANGO_AWS_ACCESS_KEY_ID")
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_SECRET_ACCESS_KEY = env("DJANGO_AWS_SECRET_ACCESS_KEY")
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_STORAGE_BUCKET_NAME = env("DJANGO_AWS_STORAGE_BUCKET_NAME")
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_QUERYSTRING_AUTH = False
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+
 # DO NOT change these unless you know what you're doing.
 _AWS_EXPIRY = 60 * 60 * 24 * 7
 # https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
 AWS_S3_OBJECT_PARAMETERS = {
     "CacheControl": f"max-age={_AWS_EXPIRY}, s-maxage={_AWS_EXPIRY}, must-revalidate"
 }
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+AWS_DEFAULT_ACL = None
 AWS_S3_REGION_NAME = env("DJANGO_AWS_S3_REGION_NAME", default=None)
-# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
 AWS_S3_CUSTOM_DOMAIN = env("DJANGO_AWS_S3_CUSTOM_DOMAIN", default=None)
 aws_s3_domain = AWS_S3_CUSTOM_DOMAIN or f"{AWS_STORAGE_BUCKET_NAME}.s3.amazonaws.com"
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#settings
+# https://django-storages.readthedocs.io/en/latest/backends/amazon-S3.html#cloudfront
 {% elif cookiecutter.cloud_provider == 'GCP' %}
 GS_BUCKET_NAME = env("DJANGO_GCP_STORAGE_BUCKET_NAME")
 GS_DEFAULT_ACL = "publicRead"

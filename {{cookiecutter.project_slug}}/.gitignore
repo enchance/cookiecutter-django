@@ -333,3 +333,9 @@ MailHog
 {% if cookiecutter.use_docker == 'y' %}
 .ipython/
 {%- endif %}
+
+
+# Custom ignores
+.idea/
+media/
+staticdev/fontawesome/

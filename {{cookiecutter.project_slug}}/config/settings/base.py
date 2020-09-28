@@ -7,7 +7,6 @@ from .settings import *
 
 
 ROOT_DIR = Path(__file__).resolve(strict=True).parent.parent.parent
-# {{ cookiecutter.project_slug }}/
 APPS_DIR = ROOT_DIR / "{{ cookiecutter.project_slug }}"
 env = environ.Env()
 
